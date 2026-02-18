@@ -1,0 +1,13 @@
+.env
+env.json
+.aws-sam/
+bcrypt/
+bcrypt-5.0.0.dist-info/
+jwt/
+pyjwt-2.11.0.dist-info/
+pymysql/
+pymysql-1.1.2.dist-info/
+lambda-login-zip.zip
+__pycache__/
+*.pyc
+

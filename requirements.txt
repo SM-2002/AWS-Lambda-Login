@@ -1,0 +1,7 @@
+pymysql
+bcrypt
+PyJWT
+datetime
+twilio
+python-dotenv
+cryptography

@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  LoginUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.12
+      CodeUri: .
+      MemorySize: 1024
+      Timeout: 300
+      Events:
+        # ApiEvent:
+        #   Type: Api
+        #   Properties:
+        #     Path: /task/{proxy+} # proxy+ captures the entire remaining path after /task/ and make it available as a path parameter named proxy.
+        #     Method: get
+        ApiEventGet:
+          Type: Api
+          Properties:
+            Path: /task/{proxy+}
+            Method: get
+ 
+        ApiEventPost:
+          Type: Api
+          Properties:
+            Path: /task/{proxy+}
+            Method: post
+        ApiEventPut:
+          Type: Api
+          Properties:
+            Path: /task/{proxy+}
+            Method: put
+        ApiEventDelete:
+          Type: Api
+          Properties:
+            Path: /task/{proxy+}
+            Method: delete
+      Environment:
+        Variables:
+          # DB_HOST: user-db1.cw3s2m64yk7z.us-east-1.rds.amazonaws.com
+          DB_HOST: ""
+          DB_USER: ""
+          DB_PASSWORD: ""
+          DB_NAME: ""
+          JWT_SECRET: ""
+          TWILIO_ACCOUNT_SID: "" 
+          TWILIO_AUTH_TOKEN: ""
+          TWILIO_VERIFY_SERVICE_SID: "" 

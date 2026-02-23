@@ -20,7 +20,15 @@ def get_users_route(event):
 
         verify_jwt_token(auth_header)
 
-        users = get_users()
+        # get page, limit, offset
+        query_params = event.get("queryStringParameters") or {}
+
+        page = int(query_params.get("page", 1))
+        limit = int(query_params.get("limit", 10))
+
+        offset = (page - 1) * limit
+
+        users = get_users(limit, offset)
 
         return success_response(users)
     

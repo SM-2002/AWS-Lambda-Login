@@ -78,13 +78,17 @@ def login_user(email, password):
             "error": "An error occurred during login"
         }
     
-def get_users():
+def get_users(limit, offset):
     try:
         conn = get_connection()
         cur = conn.cursor()
 
-        # sp_get_users()
-        cur.callproc("sp_get_users")
+        # # sp_get_users()
+        # cur.callproc("sp_get_users")
+        # users = cur.fetchall()
+
+        # sp_pagination_get_users(limit, offset)
+        cur.callproc("sp_pagination_get_users", (limit, offset))
         users = cur.fetchall()
 
         cur.close()

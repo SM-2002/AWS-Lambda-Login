@@ -113,6 +113,7 @@ def lambda_handler(event, context):
 
     method = event.get('httpMethod')
     path = event.get('pathParameters', {}).get('proxy', '')
+    path = path.rstrip('/')
 
     logger.info("Method=%s Path=%s", method, path)
 
